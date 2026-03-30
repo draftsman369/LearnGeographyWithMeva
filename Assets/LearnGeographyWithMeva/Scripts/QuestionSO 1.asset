@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a386b62cdfd715f44b3da35c0c035fe3, type: 3}
   m_Name: QuestionSO 1
   m_EditorClassIdentifier: Assembly-CSharp::QuestionSO
-  Question: "Quel vent souffle pendant la saison s\xE8che au Burkina Faso ?"
+  question: "Quel vent souffle pendant la saison s\xE8che au Burkina Faso ?"
   answers:
-  - content: e vent marin
+  - content: Le vent marin
     isRight: 0
   - content: "L\u2019harmattan"
     isRight: 1

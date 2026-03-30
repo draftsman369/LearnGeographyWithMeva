@@ -1,8 +1,11 @@
+using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class AnswerContainer : MonoBehaviour
 {
+    public static event EventHandler OnChoiceSelect;
 
     [TextArea]
     public string answer;
@@ -19,7 +22,27 @@ public class AnswerContainer : MonoBehaviour
     public void CheckIfTrue()
     {
         if(isRight)
-            Debug.LogWarning("Well Done");
-        else Debug.LogWarning("Nahh"); 
+            WellDone();
+        else Bad(); 
+        StartCoroutine(NextQuestionDelay());
+        //OnChoiceSelect?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void WellDone()
+    {
+        Debug.LogWarning("Well Done !");
+        Quiz.Instance.dialogueText.text = "Right";
+    }
+
+    private void Bad()
+    {
+        Quiz.Instance.dialogueText.text = "Wrong";
+    }
+
+    public IEnumerator NextQuestionDelay()
+    {
+        yield return new WaitForSeconds(2);
+        OnChoiceSelect?.Invoke(this, EventArgs.Empty);
+
     }
 }

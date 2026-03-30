@@ -5,6 +5,6 @@ using UnityEngine;
 public class QuestionSO : ScriptableObject
 {
     [TextArea]
-    public string Question;
+    public string question;
     public List<Answer> answers;
 }

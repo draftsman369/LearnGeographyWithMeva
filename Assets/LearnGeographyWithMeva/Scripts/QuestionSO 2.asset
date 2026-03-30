@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a386b62cdfd715f44b3da35c0c035fe3, type: 3}
-  m_Name: QuestionSO
+  m_Name: QuestionSO 2
   m_EditorClassIdentifier: Assembly-CSharp::QuestionSO
-  question: Combien de saisons principales y a-t-il au Burkina Faso ?
+  question: Comment appelle-t-on la saison avec beaucoup de pluie au Burkina Faso
+    ?
   answers:
-  - content: Une seule saison
+  - content: La saison froide
     isRight: 0
-  - content: Deux saisons
+  - content: "La saison s\xE8che"
+    isRight: 0
+  - content: La saison des pluies
     isRight: 1
-  - content: Trois saisons
-    isRight: 0
-  - content: Quatre saisons
+  - content: La saison hivernale
     isRight: 0
