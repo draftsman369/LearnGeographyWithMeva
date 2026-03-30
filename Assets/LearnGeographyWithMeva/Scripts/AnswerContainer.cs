@@ -41,6 +41,7 @@ public class AnswerContainer : MonoBehaviour
 
     private void WellDone()
     {
+        AudioManager.Instance.PlayPositiveFeedback();
         Debug.LogWarning("Well Done !");
         Quiz.Instance.AddScore(5);
         Quiz.Instance.dialogueText.text = "Right";
@@ -49,6 +50,7 @@ public class AnswerContainer : MonoBehaviour
 
     private void Bad()
     {
+        AudioManager.Instance.PlayNegativeFeedback();
         Quiz.Instance.dialogueText.text = "Wrong";
         feedbackColor = Color.red;
     }
