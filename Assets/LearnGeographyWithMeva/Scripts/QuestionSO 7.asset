@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a386b62cdfd715f44b3da35c0c035fe3, type: 3}
+  m_Name: QuestionSO 7
+  m_EditorClassIdentifier: Assembly-CSharp::QuestionSO
+  question: "Que se passe-t-il pendant la saison s\xE8che ?"
+  answers:
+  - content: Il pleut tous les jours
+    isRight: 0
+  - content: Il fait froid et neige
+    isRight: 0
+  - content: Il fait chaud et sec
+    isRight: 1
+  - content: "Il y a des temp\xEAtes de neige"
+    isRight: 0
