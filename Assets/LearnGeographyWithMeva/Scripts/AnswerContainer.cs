@@ -41,15 +41,18 @@ public class AnswerContainer : MonoBehaviour
 
     private void WellDone()
     {
+        Quiz.Instance.SetMevaReaction(MevaReaction.Happy);
         AudioManager.Instance.PlayPositiveFeedback();
         Debug.LogWarning("Well Done !");
         Quiz.Instance.AddScore(5);
         Quiz.Instance.dialogueText.text = "Right";
         feedbackColor = Color.green;
+
     }
 
     private void Bad()
     {
+        Quiz.Instance.SetMevaReaction(MevaReaction.Sad);
         AudioManager.Instance.PlayNegativeFeedback();
         Quiz.Instance.dialogueText.text = "Wrong";
         feedbackColor = Color.red;
@@ -59,6 +62,7 @@ public class AnswerContainer : MonoBehaviour
     {
         image.color = feedbackColor;
         yield return new WaitForSeconds(2);
+        Quiz.Instance.SetMevaReaction(MevaReaction.Neutral);
         image.color = initialColor;
         OnChoiceSelect?.Invoke(this, EventArgs.Empty);
 
