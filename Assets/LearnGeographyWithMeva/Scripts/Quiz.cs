@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 using System;
 using TMPro;
 using UnityEngine.UI;
@@ -21,7 +22,11 @@ public class MevaState
 
 public class Quiz : MonoBehaviour
 {
+
+    public bool questionPassed;
+
     public static EventHandler OnQuizDone;
+    public static EventHandler OnTimerUp;
 
     public static Quiz Instance;
     public List<AnswerContainer> answers;
@@ -35,7 +40,10 @@ public class Quiz : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI questionCountText;
+    public TextMeshProUGUI timerText;
 
+    public float timerValue = 7f;
+    public float timer;
 
     public List<QuestionSO> questions;
     public int currentQuestionIndex;
@@ -60,6 +68,7 @@ public class Quiz : MonoBehaviour
     {
         scoreText.text = $"{score}";
         currentQuestionIndex = 0;
+        timer = timerValue;
         InitQuestion(currentQuestionIndex);
         SetMevaReaction(MevaReaction.Neutral);
     }
@@ -105,4 +114,39 @@ public class Quiz : MonoBehaviour
     {
         currentMeveReaction.sprite = mevaStates.Find(state => state.Mood == reaction).sprite;
     }
+
+    private void Update()
+    {
+        if(!questionPassed)
+            timer -= Time.deltaTime;
+
+        int minutes = Mathf.FloorToInt(timer/60);
+        int seconds = Mathf.FloorToInt(timer % 60);
+        timerText.text = $"{minutes:00}:{seconds:00}";
+
+        if(timerText.text == "00:00" && !questionPassed)
+        {
+            StartCoroutine(NextQuestionDelay());
+        }
+    }
+
+    public void ResetTimer()
+    {
+
+            GoToNextQuestion(this, EventArgs.Empty);
+    }
+
+    public IEnumerator NextQuestionDelay()
+    {
+        questionPassed = true;
+        SetMevaReaction(MevaReaction.Sad);
+        AudioManager.Instance.PlayNegativeFeedback();
+        dialogueText.text = "Time's up !";
+        yield return new WaitForSeconds(3);
+        timer = timerValue;
+        SetMevaReaction(MevaReaction.Neutral);
+        GoToNextQuestion(this, EventArgs.Empty);
+        questionPassed = false;
+    }
+
 }

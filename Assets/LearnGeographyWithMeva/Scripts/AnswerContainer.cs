@@ -61,7 +61,10 @@ public class AnswerContainer : MonoBehaviour
     public IEnumerator NextQuestionDelay()
     {
         image.color = feedbackColor;
-        yield return new WaitForSeconds(2);
+        Quiz.Instance.questionPassed = true;
+        yield return new WaitForSeconds(3);
+        Quiz.Instance.timer = Quiz.Instance.timerValue;
+        Quiz.Instance.questionPassed = false;
         Quiz.Instance.SetMevaReaction(MevaReaction.Neutral);
         image.color = initialColor;
         OnChoiceSelect?.Invoke(this, EventArgs.Empty);
