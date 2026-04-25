@@ -5,12 +5,18 @@ public class SceneLoader : MonoBehaviour
 {
     public void LoadSceneByName(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        if (SceneTransition.Instance != null)
+            SceneTransition.Instance.LoadSceneByName(sceneName);
+        else
+            SceneManager.LoadScene(sceneName);
     }
 
     public void LoadSceneByIndex(int sceneIndex)
     {
-        SceneManager.LoadScene(sceneIndex);
+        if (SceneTransition.Instance != null)
+            SceneTransition.Instance.LoadSceneByIndex(sceneIndex);
+        else
+            SceneManager.LoadScene(sceneIndex);
     }
 
     public void QuitGame()

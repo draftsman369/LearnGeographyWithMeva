@@ -2765,9 +2765,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4549a94876ce5964387a4cd7b7ac728b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuizSelectionButton
-  quizCSV: {fileID: 0}
-  quizName: 
-  quizSceneName: QuizScene
+  quizCSV: {fileID: 4900000, guid: c9e9e8edd109b0049bb248c93558e31d, type: 3}
+  quizName: Cours d'eau
+  quizSceneName: Quiz
 --- !u!1 &2089879875
 GameObject:
   m_ObjectHideFlags: 0

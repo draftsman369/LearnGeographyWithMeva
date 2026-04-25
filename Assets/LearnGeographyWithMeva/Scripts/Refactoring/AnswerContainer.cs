@@ -57,6 +57,8 @@ public class AnswerContainer : MonoBehaviour
         int totalXP = Quiz.Instance.GetXPRewardForCorrectAnswer();
         int timeBonusXP = Mathf.FloorToInt(Quiz.Instance.timer);
 
+        Quiz.Instance.AddQuizXP(totalXP);
+
         if (PlayerStats.Instance != null)
         {
             PlayerStats.Instance.AddXP(totalXP);
